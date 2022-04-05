@@ -13,5 +13,4 @@ for file in $argv
 		exit $status
 	end
 end
-
 exit 0
