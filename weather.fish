@@ -7,3 +7,4 @@ if test "$argv" != ''
 end
 
 wget -O - "https://wttr.in/$location" 2> /dev/null
+exit $status
