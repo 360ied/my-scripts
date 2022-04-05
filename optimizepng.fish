@@ -7,10 +7,11 @@ for file in $argv
 	pngquant --speed 1 --strip --verbose   \
 		 --skip-if-larger --output "$outfile" \
 		 -- "$file"
-	if test $status != 0
+	set pngquantstatus $status
+	if test $pngquantstatus != 0
 		# pngquant exited with error
-		echo "ERR: PNGQUANT EXITED WITH NONZERO STATUS:" $status
-		exit $status
+		echo "ERR: PNGQUANT EXITED WITH NONZERO STATUS:" $pngquantstatus
+		exit $pngquantstatus
 	end
 end
 exit 0
