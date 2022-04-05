@@ -11,7 +11,7 @@ function print_time
        (cat /sys/class/power_supply/BAT0/charge_full)
     set -f battery_charge_percentage \
        (math "$battery_charge_now / $battery_charge_full * 100")
-    set -f local_timezone_date (date -Idate)
+    set -f local_timezone_date (date +'%a %Y-%m-%d')
     echo "$local_timezone_date$uptime | $utc_timezone_time" \
          "| $battery_charge_percentage%"
 end
