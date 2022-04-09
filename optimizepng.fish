@@ -3,10 +3,17 @@
 function optimize --argument-names outfile infile
 	pngquant --speed 1 --strip --verbose \
 		 --skip-if-larger --output "$outfile" \
-		 -- "$file"
+		 -- "$infile"
 end
 
-for infile in $argv
+set infiles $argv
+
+# support optimizing the current opened file in imv
+if set -q imv_current_file
+	set infiles $infiles $imv_current_file
+end
+
+for infile in $infiles
 	set -l outfile \
 		 (echo -n "$infile" | awk -F '.png' '{print $1}')'_pngquant.png'
 
