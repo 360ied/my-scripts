@@ -1,12 +1,17 @@
 #!/usr/bin/env fish
 
-for file in $argv
-	set -l outfile \
-		 (echo -n "$file" | awk -F '.png' '{print $1}')'_pngquant.png'
-
-	pngquant --speed 1 --strip --verbose   \
+function optimize --argument-names outfile infile
+	pngquant --speed 1 --strip --verbose \
 		 --skip-if-larger --output "$outfile" \
 		 -- "$file"
+end
+
+for infile in $argv
+	set -l outfile \
+		 (echo -n "$infile" | awk -F '.png' '{print $1}')'_pngquant.png'
+
+	optimize "$outfile" "$infile"
+
 	set pngquantstatus $status
 	if test $pngquantstatus != 0
 		# pngquant exited with error
