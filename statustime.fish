@@ -9,7 +9,7 @@ function print_time
         (cat /sys/class/power_supply/BAT0/charge_full)
     set -f battery_charge_percentage \
         (math "$battery_charge_now / $battery_charge_full * 100")
-    set -f local_timezone_date (date +'%a %Y-%m-%d')
+    set -f local_timezone_date (date +'%a %Y-%m-%d %Z(%z)')
     set -f memory_usage \
         (free -h | grep Mem | awk '{ printf "%s/%s", $3, $2 }')
 
