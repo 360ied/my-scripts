@@ -14,7 +14,7 @@ function print_time
         (free -h | grep Mem | awk '{ printf "%s/%s", $3, $2 }')
 
     echo "$local_timezone_date$uptime" \
-        "| mem $memory_usage" \
+        "| Mem $memory_usage" \
         "| $utc_timezone_time" \
         "| $battery_charge_percentage%"
 end
