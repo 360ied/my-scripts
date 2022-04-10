@@ -12,8 +12,12 @@ function print_time
     set -f battery_charge_percentage \
        (math "$battery_charge_now / $battery_charge_full * 100")
     set -f local_timezone_date (date +'%a %Y-%m-%d')
-    echo "$local_timezone_date$uptime | $utc_timezone_time" \
-         "| $battery_charge_percentage%"
+    set -f memory_usage \
+       (free -h | grep Mem | awk '{ printf "%s/%s", $3, $2 }')
+    echo "$local_timezone_date$uptime" \
+       "| mem $memory_usage" \
+       "| $utc_timezone_time" \
+       "| $battery_charge_percentage%"
 end
 
 while true
