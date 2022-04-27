@@ -21,5 +21,5 @@ end
 
 while true
     print_time
-    sleep 1
+    sleep 5
 end
