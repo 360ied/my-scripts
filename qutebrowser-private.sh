@@ -1,3 +1,3 @@
 #!/bin/sh
 
-qutebrowser ':open -p' ':q'
+qutebrowser ':open -p'
