@@ -1,5 +1,4 @@
-#!/usr/bin/env nix-shell
-#!nix-shell -i fish -p wget
+#!/usr/bin/env fish
 
 set location 'Toronto'
 
