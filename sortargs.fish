@@ -8,4 +8,4 @@ function printchars --argument-names chars
     end
 end
 
-printchars "$argv" | sort | grep -Gv '\s'
+echo -s (printchars "$argv" | sort | grep -Gv '\s')
